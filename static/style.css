@@ -1,0 +1,150 @@
+:root {
+  --bg: #14161a;
+  --panel: #1b1e24;
+  --edge: #2b303a;
+  --fg: #d7dae0;
+  --muted: #8b93a1;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2rem 1.5rem 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.5 ui-sans-serif, system-ui, sans-serif;
+}
+
+main { max-width: 60rem; margin: 0 auto; }
+
+h1 { font-size: 1.25rem; margin: 0 0 .25rem; }
+
+p.lede { color: var(--muted); margin: 0 0 1.5rem; }
+
+textarea {
+  width: 100%;
+  min-height: 14rem;
+  padding: .75rem;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--fg);
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  resize: vertical;
+}
+
+button {
+  margin-top: .75rem;
+  padding: .5rem 1.25rem;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: #2b62d4;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover { background: #3a71e3; }
+
+/* The submit button and the file picker sit on one row; the picker is a label
+   because a bare file input cannot be styled to match. */
+.actions { display: flex; align-items: center; gap: .75rem; margin-top: .75rem; }
+
+.actions button { margin-top: 0; }
+
+label.file {
+  padding: .5rem 1.25rem;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+label.file:hover { border-color: var(--muted); }
+
+.filename { color: var(--muted); font-size: .85rem; }
+
+/* While a file is held over the box. */
+textarea.dropping { border-color: #2b62d4; background: #1f2530; }
+
+.meta { color: var(--muted); margin: 1.5rem 0 .5rem; font-size: .85rem; }
+.meta strong { color: var(--fg); }
+
+.error {
+  margin-top: 1.5rem;
+  padding: .75rem 1rem;
+  border: 1px solid #5c2b2b;
+  border-radius: 6px;
+  background: #241a1a;
+  color: #f0b4b4;
+}
+
+pre.code {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: var(--panel);
+  overflow-x: auto;
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre;
+  tab-size: 4;
+}
+
+/* One color per class jev can choose. Every pair is at least 25 CIE76 deltaE
+   apart and every color clears 4.5:1 against the panel; a test enforces both. */
+.tok-keyword     { color: #c678dd; }
+.tok-type        { color: #ecd06f; }
+.tok-function    { color: #61afef; }
+.tok-variable    { color: #e06c75; }
+.tok-string      { color: #98c379; }
+.tok-number      { color: #cf8040; }
+.tok-comment     { color: #7f8898; font-style: italic; }
+.tok-operator    { color: #56b6c2; }
+.tok-punctuation { color: #c2b49e; }
+.tok-other       { color: #f0f3f8; }
+
+/* Low-confidence answers are dimmed rather than hidden. */
+.unsure { opacity: .55; text-decoration: underline dotted currentColor; }
+
+details.raw { margin-top: .75rem; }
+
+details.raw summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: .85rem;
+  padding: .25rem 0;
+}
+
+details.raw summary:hover { color: var(--fg); }
+
+details.raw pre {
+  margin: .5rem 0 0;
+  padding: .75rem;
+  max-height: 24rem;
+  overflow: auto;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--muted);
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* The hovered fragment, named in full below the block. BPE cuts one word into
+   several spans, so the highlight is what shows where this one starts and ends. */
+pre.code span[data-class]:hover {
+  background: var(--edge);
+  border-radius: 2px;
+}
+
+p.readout {
+  margin: .5rem 0 0;
+  min-height: 1.5em;
+  color: var(--muted);
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre;
+  overflow-x: auto;
+}
